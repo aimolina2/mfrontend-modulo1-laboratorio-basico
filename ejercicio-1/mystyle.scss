@@ -1,0 +1,79 @@
+@use "sass:color";
+
+$color-base-1: rgb(73, 192, 92);
+$color-base-2: rgb(108, 163, 240);
+$color-base-3: blue;
+
+body {
+  background-color: rgb(169, 236, 230);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container-colours {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.container-1,
+.container-2,
+.container-3 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 2fr repeat(4, 1fr);
+  gap: 10px;
+}
+
+.box {
+  height: 100px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 20px;
+    padding: 10px;
+  }
+}
+
+@for $i from 1 through 3 {
+  // Color base aplicado según índice del contenedor
+  $color: $color-base-1;
+  @if $i == 1 {
+    .container-#{$i} > .base-color {
+      background-color: $color;
+    }
+  } @else if $i == 2 {
+    $color: $color-base-2;
+    .container-#{$i} > .base-color {
+      background-color: $color;
+    }
+  } @else if $i == 3 {
+    $color: $color-base-3;
+    .container-#{$i} > .base-color {
+      background-color: $color;
+    }
+  }
+
+  // Generación de clases darken y lighten según el índice del contenedor
+
+  @for $d from 1 through 4 {
+    .container-#{$i} > .darken-#{$d} {
+      background-color: color.adjust($color, $lightness: -$d * 5%);
+    }
+  }
+
+  @for $l from 1 through 4 {
+    .container-#{$i} > .lighten-#{$l} {
+      background-color: color.adjust($color, $lightness: $l * 5%);
+    }
+  }
+}
