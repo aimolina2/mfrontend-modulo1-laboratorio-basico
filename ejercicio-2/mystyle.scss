@@ -1,3 +1,60 @@
+@import "styleA";
+// @import "styleB";
+
 body {
-  background-color: aquamarine;
+  background-color: rgb(255, 255, 255);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  font-size: 18px;
+
+  .box {
+    border-radius: $box-border-radius;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 36px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.box {
+      font-family:
+        comic sans ms,
+        cursive,
+        sans-serif;
+      font-weight: bold;
+    }
+  }
+  .container-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.box-base {
+  background-color: $color-base;
+}
+.box-important {
+  background-color: $color-important;
+}
+.box-warning {
+  background-color: $color-warning;
+}
+
+.principal-font {
+  font-family: $principal-font;
+}
+.secondary-font {
+  font-family: $secondary-font;
+}
+
+.box-shadow {
+  background-color: rgb(255, 255, 255);
+  box-shadow: $box-shadow;
 }
